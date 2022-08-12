@@ -188,7 +188,7 @@
 							</div>
 							<div class="card-body">
 								<!-- 박스 번호 출력 -->
-								<p>No.${goodsVo.loc_seq}</p>
+								<p>No.${goodsVo.v_machine_space_no}</p>
 								<h4 class="card-product__title">
 									<!-- 상품 이름 출력 -->
 									<a href="detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }"><b>${goodsVo.g_name}</b></a>
