@@ -269,7 +269,7 @@ public class GoodsController {
 			// 서버 연결
 			HttpURLConnection connection = (HttpURLConnection) address.openConnection();
 			connection.setRequestMethod("POST");
-			connection.setRequestProperty("Authorization", "KakaoAK 413a502dd48aba1035a01b115f59f18c");
+			connection.setRequestProperty("Authorization", "KakaoAK c9ed322880ff2e79a994f9b1b5f7bb7b");
 			connection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			// setDoInput 기본값 : true, setDoOutput 기본값 : false이므로 모두 true로 맞춰주자
 			connection.setDoOutput(true);
@@ -326,7 +326,7 @@ public class GoodsController {
 			// 서버 연결
 			HttpURLConnection connection = (HttpURLConnection) address.openConnection();
 			connection.setRequestMethod("POST");
-			connection.setRequestProperty("Authorization", "KakaoAK 413a502dd48aba1035a01b115f59f18c");
+			connection.setRequestProperty("Authorization", "KakaoAK c9ed322880ff2e79a994f9b1b5f7bb7b");
 			connection.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 			connection.setDoOutput(true);
 

@@ -2,7 +2,7 @@
 <%@page import="com.forus.domain.UserVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +42,8 @@
 	href='http://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700,800'
 	rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700'
-	rel='stylesheet' type='text/css'>
+	rel='stylesheet' type='text/
+'>
 
 <!-- Font Awesome -->
 <link rel="stylesheet"
@@ -64,6 +65,10 @@
 <!-- Responsive CSS -->
 <link href="css/responsive.css" rel="stylesheet">
 <!-- 페이지 footer 끝-->
+<!-- icon fontawsome -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 
@@ -76,36 +81,49 @@
 
 
 	<!---------------------------- nav bar 시작 ------------------>
-	<%String result = (String)session.getAttribute("user_id");%>
+	<%
+	String result = (String) session.getAttribute("user_id");
+	%>
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<a href="main.do?user_id=${result }" style="margin-right: 200px; font-weight:600;">
-			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
+			<a href="main.do?user_id=${result }"
+				style="margin-right: 200px; font-weight: 600;"> <img
+				src="images/foruslogo3.png" width="60px" height="60px"
+				style="margin-right: 5px;">EARTH BOX
+			</a>
 		</div>
 		<ul class="navbar__menu">
-			<% if(result == null){ %>
+			<%
+			if (result == null) {
+			%>
 			<strong><li><a href="viewLogin.do">로그인</a></li></strong>
 			<strong><li><a href="manual.do">이용방법</a></li></strong>
 			<strong><li><a href="viewLogin.do">상품등록</a></li></strong>
 			<strong><li><a href="viewLogin.do">상품회수</a></li></strong>
-			<% } else { %>
+			<%
+			} else {
+			%>
 			<strong><li><a href="logoutService.do">로그아웃</a></li></strong>
 			<strong><li><a href="orderlist.do">주문내역</a></li></strong>
 			<strong><li><a href="inputGoods.do">상품등록</a></li></strong>
 			<strong><li><a href="getGoods.do">상품회수</a></li></strong>
-			<%} %>
-			
+			<%
+			}
+			%>
+
 		</ul>
 		<a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i>
 		</a>
 	</nav>
 	<!---------------------------- nav bar 끝 ------------------>
-	
+
 	<!---------------------------- 제품 리스트 시작 ---------------->
 	<section class="section-margin calc-60px">
 		<div class="container">
 			<div class="section-intro pb-60px">
-						<span>'구매 중'인 제품은 구매할 수 없습니다.</span>
+				<h4 style="font-size: 25px;color: #777;margin-top: 100px; font-weight:500;">
+					<span>'구매 중'인 제품은 구매할 수 없습니다.</span>
+				</h4>
 				<h4>
 					<b>Earth Box(목련마을 5단지)</b>
 				</h4>
@@ -119,51 +137,78 @@
 				<c:forEach items="${list }" var="goodsVo">
 					<div class="col-md-6 col-lg-4 col-xl-3">
 						<div class="card text-center card-product">
-						<p class="card-product__price" style="color:#599555">${goodsVo.g_status} 중</p><br>
+							<p class="card-product__price" style="color: #599555; font-size:30px;" >${goodsVo.g_status}
+								중</p>
+							<br>
 							<div class="card-product__img">
-													<!-- 상품 사진 출력 -->
-								<img class="card-img" src=${goodsVo.g_img} alt="">
+								<!-- 상품 사진 출력 -->
+								<img class="card-img" src=${goodsVo.g_img } alt="">
 								<ul class="card-product__imgOverlay">
-								<!-- 상세 페이지 보기 -->
-									<% if(result == null){ %>
-									<li><button type="button" onclick="location.href= 'viewLogin.do'"><i class="ti-search"></i></button></li>
-									<% } else { %>
-									<li><button type="button" onclick="location.href= 'detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }'"><i class="ti-search"></i></button></li>
-									<% } %>
-								<!-- 장바구니 -->	
-									<% if(result == null){ %>
-									<li><button type="button" onclick="location.href= 'viewLogin.do'"><i class="ti-search"></i></button></li>
-									<% } else { %>
-									<li><button type="button" onclick="location.href= 'detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }'"><i class="ti-search"></i></button></li>
-									<% } %>
-								<!-- 관심 상품 -->	
-									<li><button><i class="ti-heart"></i></button></li>
+									<!-- 상세 페이지 보기 -->
+									<%
+									if (result == null) {
+									%>
+									<li><button type="button"
+											onclick="location.href= 'viewLogin.do'">
+											<i class="ti-search"></i>
+										</button></li>
+									<%
+									} else {
+									%>
+									<li><button type="button"
+											onclick="location.href= 'detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }'">
+											<i class="ti-search"></i>
+										</button></li>
+									<%
+									}
+									%>
+									<!-- 장바구니 -->
+									<%
+									if (result == null) {
+									%>
+									<li><button type="button"
+											onclick="location.href= 'viewLogin.do'">
+											<i class="ti-search"></i>
+										</button></li>
+									<%
+									} else {
+									%>
+									<li><button type="button"
+											onclick="location.href= 'detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }'">
+											<i class="ti-search"></i>
+										</button></li>
+									<%
+									}
+									%>
+									<!-- 관심 상품 -->
+									<li><button>
+											<i class="ti-heart"></i>
+										</button></li>
 								</ul>
 							</div>
 							<div class="card-body">
 								<!-- 박스 번호 출력 -->
 								<p>No.${goodsVo.loc_seq}</p>
 								<h4 class="card-product__title">
-																	<!-- 상품 이름 출력 -->
+									<!-- 상품 이름 출력 -->
 									<a href="detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }"><b>${goodsVo.g_name}</b></a>
 								</h4>
-																<!-- 상품 가격 출력 -->
+								<!-- 상품 가격 출력 -->
 								<p class="card-product__price">￦ ${goodsVo.g_price}</p>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
 				<!-- 제품리스트 출력 끝 -->
-				</div>
 			</div>
+		</div>
 		</div>
 		</div>
 		</div>
 	</section>
 	<!---------------------------- 제품 리스트 끝 ---------------->
-	
-	<div>
-	</div>
+
+	<div></div>
 
 	<!-- ------------------------- footer 시작 ------------------>
 	<footer>
@@ -172,7 +217,8 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="footer_logo   wow fadeInUp animated">
-							<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX
+							<img src="images/foruslogo3.png" width="60px" height="60px"
+								style="margin-right: 5px;">EARTH BOX
 						</div>
 					</div>
 				</div>
