@@ -127,7 +127,7 @@ body{
 </style>
 <body>
 <div class = "spacebr container">
-<img src="images/foruslogo.png" alt="" style="width:550px; margin-right:80px">
+<img src="images/foruslogo.png" alt="" style="width:550px; margin-right:80px; margin-bottom:-100px;">
 </div>
 <div class = "container">
   <h1>자원도 절약하고 환경도 지키는</h1>

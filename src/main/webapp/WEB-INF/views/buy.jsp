@@ -70,8 +70,9 @@
 	<!---------------------------- nav bar 시작 ------------------>
 	<%String result = (String)session.getAttribute("user_id");%>
 	<nav class="navbar">
-		<div class="navbar__logo">
-			<a href="main.do?user_id=${result }" style="margin-right: 200px; font-weight:600;">
+		<div class="navbar__logo" style="margin-right : -50px;">
+			<a href="main.do?user_id=${result }"
+			 style="margin-right: 200px; font-weight:600; font-size:32px;">
 			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
 		</div>
 		<ul class="navbar__menu">
@@ -144,7 +145,7 @@
 						<td></td>
 						<td>
 							<div class="cupon_text d-flex align-items-center">
-								<h5 style="font-size: 17px; margin-left: 100px">
+								<h5 style="font-size: 17px; margin-left: 200px">
 									${vo.user_point } point
 									<h5>
 										<input type="text" placeholder="사용할 포인트"> <a
@@ -186,7 +187,8 @@
 						<td></td>
 						<td>
 							<div class="checkout_btn_inner d-flex align-items-center">
-								<a class="gray_btn" href="detail.do">뒤로가기</a>
+								<button type="button" class="primary-btn ml-2"
+									onclick="location.href='detail.do?g_seq=${vo.g_seq}&user_id=${result }';">뒤로가기</button>
 								<button type="button" class="primary-btn ml-2"
 									onclick="goodsStatusUpdate(${vo.g_seq })">결제하기</button>
 							</div>
@@ -205,7 +207,7 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="footer_logo   wow fadeInUp animated">
-							<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX
+							<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;"><p>EARTH BOX</p>
 						</div>
 					</div>
 				</div>

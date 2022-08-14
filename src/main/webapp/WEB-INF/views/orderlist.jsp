@@ -72,19 +72,32 @@
 	%>
 	<!---------------------------- nav bar 시작 ------------------>
 	<nav class="navbar">
-		<div class="navbar__logo">
-			<a href="main.do?user_id=${result }" style="margin-right: 200px; font-weight:600;">
+		<div class="navbar__logo" style="margin-right : -50px;">
+			<a href="main.do?user_id=${result }"
+			 style="margin-right: 200px; font-weight:600; font-size:32px;">
 			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
 		</div>
 		<ul class="navbar__menu">
 			<strong><li>
-					<% if(result == null){ %> <a href="viewLogin.do">로그인</a> <% } else { %>
-					<a href="logoutService.do">로그아웃</a> <% } %>
+					<%
+					if (result == null) {
+					%> <a href="viewLogin.do">로그인</a> <%
+ } else {
+ %>
+					<a href="logoutService.do">로그아웃</a> <%
+ }
+ %>
 			</li></strong>
 			<strong><li><a href="keypad.do">박스열기</a></li></strong>
 			<strong><li>
-					<% if(result == null){ %> <a href=viewLogin.do>주문내역</a> <% } else { %>
-					<a href=orderlist.do>주문내역</a> <%} %>
+					<%
+					if (result == null) {
+					%> <a href=viewLogin.do>주문내역</a> <%
+ } else {
+ %>
+					<a href=orderlist.do>주문내역</a> <%
+ }
+ %>
 			</li></strong>
 		</ul>
 		<a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i>
@@ -133,7 +146,8 @@
 										<h5>${vo.g_regdate}</h5>
 									</td>
 									<td>
-										<button type="button" class="btn btn-info btn-sm" onclick="completeBuy(${vo.g_seq})">꺼내기</button>
+										<button type="button" class="btn btn-info btn-sm"
+											onclick="completeBuy(${vo.g_seq})">꺼내기</button>
 									</td>
 								</tr>
 						</tbody>
@@ -159,7 +173,8 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="footer_logo   wow fadeInUp animated">
-							<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX
+							<img src="images/foruslogo3.png" width="60px" height="60px"
+								style="margin-right: 5px;">EARTH BOX
 						</div>
 					</div>
 				</div>

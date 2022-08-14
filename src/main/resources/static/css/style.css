@@ -26,6 +26,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 
 body{
@@ -57,17 +64,17 @@ body {
 a {
     text-decoration: none;
     color: #599555;
+    font-size: 24px;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background: #fff;
-    padding: 8px 12px;
+    padding: 10px 0px;
 }
 .navbar__logo {
-    font-size: 24px;
+    font-size: 40px;
     color: #fff;
 }
 

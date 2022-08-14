@@ -71,8 +71,9 @@
 
 	<!---------------------------- nav bar 시작 ------------------>
 	<nav class="navbar">
-		<div class="navbar__logo">
-			<a href="main.do?user_id=${result }" style="margin-right: 200px; font-weight:600;">
+		<div class="navbar__logo" style="margin-right : -50px;">
+			<a href="main.do?user_id=${result }"
+			 style="margin-right: 200px; font-weight:600; font-size:32px;">
 			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
 		</div>
 		<ul class="navbar__menu">

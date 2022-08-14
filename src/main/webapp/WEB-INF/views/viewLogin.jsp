@@ -16,10 +16,10 @@
 		<div class="img">
 			<img src="img/bg.svg">
 		</div>
-		<div class="login-content">
+				<img src="images/foruslogo.png" style="margin-left: 50px; margin-top:100px; margin-bottom: -100px; width:600px;">
+		<div class="login-content" style="margin-left:200px;">
 			<form action="login.do" method='post'>
-				<img src="images/foruslogo.png"  width="300px" height="300px" style= margin-right:100px;>
-				<h2 class="title">EARTH BOX</h2>
+				<h2 class="title" >EARTH BOX</h2>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>

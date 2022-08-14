@@ -85,10 +85,10 @@
 	String result = (String) session.getAttribute("user_id");
 	%>
 	<nav class="navbar">
-		<div class="navbar__logo">
+		<div class="navbar__logo" style="margin-right: -50px;">
 			<a href="main.do?user_id=${result }"
-				style="margin-right: 200px; font-weight: 600;"> <img
-				src="images/foruslogo3.png" width="60px" height="60px"
+				style="margin-right: 200px; font-weight: 600; font-size:32px;">
+				 <img src="images/foruslogo3.png" width="60px" height="60px"
 				style="margin-right: 5px;">EARTH BOX
 			</a>
 		</div>
@@ -121,15 +121,12 @@
 	<section class="section-margin calc-60px">
 		<div class="container">
 			<div class="section-intro pb-60px">
-				<h4 style="font-size: 25px;color: #777;margin-top: 100px; font-weight:500;">
+				<h3 style="text-align:center">
+					 <span class="section-intro__style" style="font-size: 40px; margin-bottom:70px;">한국 아델리움</span>
+				</h3>
+				<h4 style="font-size: 30px;color: #777;margin-top: 30px; text-align:center;">
 					<span>'구매 중'인 제품은 구매할 수 없습니다.</span>
 				</h4>
-				<h4>
-					<b>Earth Box(목련마을 5단지)</b>
-				</h4>
-				<h3>
-					제품 <span class="section-intro__style">목록</span>
-				</h3>
 			</div>
 			<div class="row">
 				<!-- 제품리스트 출력 -->
@@ -137,7 +134,7 @@
 				<c:forEach items="${list }" var="goodsVo">
 					<div class="col-md-6 col-lg-4 col-xl-3">
 						<div class="card text-center card-product">
-							<p class="card-product__price" style="color: #599555; font-size:30px;" >${goodsVo.g_status}
+							<p class="card-product__price" style="color: #599555; font-size:30px; margin-bottom: -30px;" >${goodsVo.g_status}
 								중</p>
 							<br>
 							<div class="card-product__img">
@@ -188,13 +185,13 @@
 							</div>
 							<div class="card-body">
 								<!-- 박스 번호 출력 -->
-								<p>No.${goodsVo.v_machine_space_no}</p>
+								<p style="color: #777; font-size:25px;">No.${goodsVo.v_machine_space_no}</p>
 								<h4 class="card-product__title">
-									<!-- 상품 이름 출력 -->
-									<a href="detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }"><b>${goodsVo.g_name}</b></a>
+									<!-- 상품 	이름 출력 -->
+									<a href="detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }"><b style="font-size:30px;">${goodsVo.g_name}</b></a>
 								</h4>
 								<!-- 상품 가격 출력 -->
-								<p class="card-product__price">￦ ${goodsVo.g_price}</p>
+								<p class="card-product__price" style="font-size:25px;">￦ ${goodsVo.g_price}</p>
 							</div>
 						</div>
 					</div>
@@ -218,7 +215,7 @@
 					<div class="col-md-12 text-center">
 						<div class="footer_logo   wow fadeInUp animated">
 							<img src="images/foruslogo3.png" width="60px" height="60px"
-								style="margin-right: 5px;">EARTH BOX
+								style="margin-right: 5px;"><p>EARTH BOX</p>
 						</div>
 					</div>
 				</div>

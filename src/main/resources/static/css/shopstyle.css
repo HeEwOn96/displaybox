@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,500,600");
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500");
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     color: #777;
@@ -35,7 +41,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Oswald", sans-serif;
+    font-family: "Happiness-Sans-Title";
     color: #222;
     line-height: 1.1
 }
@@ -763,7 +769,7 @@ a {
 }
 
 .section-intro__style {
-    border-bottom: 2px solid #384aeb;
+    border-bottom: 2px solid #599555;
     padding-bottom: 8px
 }
 
@@ -4029,7 +4035,7 @@ a {
 }
 
 .cart_inner .table tbody tr.bottom_button td .cupon_text {
-    margin-left: -429px
+    margin-left: -536px
 }
 
 @media (min-width: 991px) {

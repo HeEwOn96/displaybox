@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Happiness-Sans-Title';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/Happiness-Sans-Title.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 *{
 	padding: 0;
 	margin: 0;
@@ -5,8 +13,8 @@
 }
 
 body{
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
+    font-family: 'Happiness-Sans-Title';
+    overflow: visible;
 }
 
 .wave{
@@ -20,7 +28,7 @@ body{
 .container{
     width: 100vw;
     height: 100vh;
-    display: grid;
+    /*display: grid;*/
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
     padding: 0 2rem;
@@ -32,12 +40,13 @@ body{
 	align-items: center;
 }
 
-.login-content{
+/*.login-content{
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	text-align: center;
-}
+	margin-left:250px;
+}*/
 
 .img img{
 	width: 500px;
@@ -48,7 +57,7 @@ form{
 }
 
 .login-content img{
-    height: 300px;
+   margin-left: 150px;
 }
 
 .login-content h2{
@@ -190,11 +199,11 @@ a:hover{
 
 @media screen and (max-width: 1000px){
 	form{
-		width: 290px;
+		width: 390px;
 	}
 
 	.login-content h2{
-        font-size: 2.4rem;
+        font-size: 3.4rem;
         margin: 8px 0;
 	}
 

@@ -163,11 +163,11 @@ div {
 			<button class="number">8</button>
 			<button class="number">9</button>
 			<button class="number1">
-				<img src="images/undo.png" style="width: 85px; heigth: 85px;"onclick="location.href='main.do'">
+				<img src="images/undo.png" style="width: 33.33%;"onclick="location.href='main.do'">
 			</button>
 			<button class="number">0</button>
 			<button class="number1">
-				<img src="images/tap.png" style="width: 85px; heigth: 85px;">
+				<img src="images/tap.png" style="width: 33.33%;">
 			</button>
 		</div>
 

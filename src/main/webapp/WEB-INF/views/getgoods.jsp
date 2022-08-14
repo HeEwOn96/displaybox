@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,21 +67,27 @@
 </head>
 
 <body>
-	<%String result = (String)session.getAttribute("user_id");%>
+	<%
+	String result = (String) session.getAttribute("user_id");
+	%>
 
 	<!---------------------------- nav bar 시작 ------------------>
 	<nav class="navbar">
-		<div class="navbar__logo">
-			<a href="main.do?user_id=${result }" style="margin-right: 200px; font-weight:600;">
+		<div class="navbar__logo" style="margin-right : -50px;">
+			<a href="main.do?user_id=${result }"
+			 style="margin-right: 200px; font-weight:600; font-size:32px;">
 			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
 		</div>
 		<ul class="navbar__menu">
 			<strong><li>
-			<% if(result == null){ %>
-			<a href="viewLogin.do">로그인</a>
-			<% } else { %>
-			<a href="logoutService.do">로그아웃</a>
-			<% } %>
+					<%
+					if (result == null) {
+					%> <a href="viewLogin.do">로그인</a> <%
+ } else {
+ %>
+					<a href="logoutService.do">로그아웃</a> <%
+ }
+ %>
 			</li></strong>
 			<strong><li><a href="manual.do">이용방법</a></li></strong>
 			<strong><li><a href=orderlist.do>주문내역</a></li></strong>
@@ -90,7 +96,7 @@
 		</a>
 	</nav>
 	<!---------------------------- nav bar 끝 ------------------>
-	
+
 	<!---------------------------- 배너 시작 --------------------->
 	<div class="container h-100">
 		<div class="text-center">
@@ -99,7 +105,7 @@
 	</div>
 	</div>
 	<!---------------------------- 배너 끝 --------------------->
-	
+
 	<!---------------------------- 장바구니 시작 --------------------->
 	<section class="cart_area">
 		<div class="container">
@@ -113,50 +119,50 @@
 								<th scope="col"><b>가격</b></th>
 								<th scope="col"><b>구매날짜</b></th>
 								<th scope="col"><b>삭제</b></th>
-								
+
 							</tr>
 						</thead>
 						<tbody>
-						
-						<c:forEach items="${vo }" var="vo">
-						<form action="deleteGoods.do">
-							<tr>
-								<input type="hidden" name="g_seq" id="g_seq"+${i} value="${vo.g_seq }">
-								<td>
-									<div class="media">
-										<div class="d-flex">
-											<img src=${vo.g_img} width="250px" height="250px">
-										</div>
-										<div class="media-body">
-											<p>${vo.g_name}</p>
-										</div>
-									</div>
-								</td>
-								<td>
-									<h5>${vo.v_machine_pw}</h5>
-								</td>
-								<td>
-									<h5>${vo.g_price}</h5>
-								</td>
-								<td>
-									<h5>${vo.g_regdate}</h5>
-								</td>
-								<td>
-									<button class="btn btn-info btn-sm" onclick="goDelete(${vo.g_seq})">삭제</button>
-								</td>
-							</tr>
-						</form>
+
+							<c:forEach items="${vo }" var="vo">
+								<form action="deleteGoods.do">
+									<tr>
+										<input type="hidden" name="g_seq" id="g_seq" +${i}
+											value="${vo.g_seq }">
+										<td>
+													<img src=${vo.g_img } width="250px" height="250px">
+													<p>${vo.g_name}</p>
+										</td>
+										<td>
+											<h5>${vo.v_machine_pw}</h5>
+										</td>
+										<td>
+											<h5>${vo.g_price}원</h5>
+										</td>
+										<td>
+											<h5>${vo.g_regdate}</h5>
+										</td>
+										<td>
+											<button class="btn btn-info btn-sm"
+												onclick="goDelete(${vo.g_seq})">삭제</button>
+										</td>
+									</tr>
+								</form>
 						</tbody>
-							</c:forEach>
+						</c:forEach>
 					</table>
 				</div>
 			</div>
 		</div>
 	</section>
-	<br/><br/><br/><br/><br/>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 	<p align="center">
-	<a class="button primary-btn" href="main.do?user_id=${result }">뒤로가기</a>
-	
+		<a class="button primary-btn" href="main.do?user_id=${result }">뒤로가기</a>
+
 	</p>
 	<!-- ------------------------- footer 시작 ------------------>
 	<footer>
@@ -165,7 +171,8 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="footer_logo   wow fadeInUp animated">
-							<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX
+							<img src="images/foruslogo3.png" width="60px" height="60px"
+								style="margin-right: 5px;"><p>EARTH BOX</p>
 						</div>
 					</div>
 				</div>
@@ -233,6 +240,6 @@
 		}
 	
 	</script>
-	
+
 </body>
 </html>
