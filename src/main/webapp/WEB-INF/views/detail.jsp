@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,7 +124,10 @@
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h2 style="text-align:center;">￦ ${vo.g_price }</h2>
+						<h2 style="text-align:center;">￦<fmt:formatNumber value="${vo.g_price }" pattern="#,###"/></h2>
+						
+						
+						
 						<p>${vo.g_info }</p>
 						<div class="product_count">
 							<button

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,7 +138,7 @@
 											<h5>${vo.v_machine_pw}</h5>
 										</td>
 										<td>
-											<h5>${vo.g_price}원</h5>
+											<h5><fmt:formatNumber value="${vo.g_price }" pattern="#,###"/>원</h5>
 										</td>
 										<td>
 											<h5>${vo.g_regdate}</h5>
@@ -225,15 +226,14 @@
 	<script src="js/script.js"></script>
 	<script src="js/shopmain.js"></script>
 	<script>
-		function goDelete(g_seq){
-			console.log(g_seq)
+		var goDelete = function(g_seq){
 			$.ajax({
 				url : "deleteGoods.do",
 				type : "post",
 				data : {"g_seq" : g_seq},
 				success : function(data){
-					 location.href="/getGoods.do"
-							console.log("성공")
+					console.log("성공")
+					location.href="/getGoods.do";
 				},
 				error : function(){alert('error')} 
 			});

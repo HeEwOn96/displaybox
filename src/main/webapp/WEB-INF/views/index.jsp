@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,7 +192,9 @@
 									<a href="detail.do?g_seq=${goodsVo.g_seq}&user_id=${result }"><b style="font-size:30px;">${goodsVo.g_name}</b></a>
 								</h4>
 								<!-- 상품 가격 출력 -->
-								<p class="card-product__price" style="font-size:25px;">￦ ${goodsVo.g_price}</p>
+								<p class="card-product__price" style="font-size:25px;">￦<fmt:formatNumber value="${goodsVo.g_price }" pattern="#,###"/></p>
+								
+								
 							</div>
 						</div>
 					</div>

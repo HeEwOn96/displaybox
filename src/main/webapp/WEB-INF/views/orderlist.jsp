@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,12 +73,14 @@
 	%>
 	<!---------------------------- nav bar 시작 ------------------>
 	<nav class="navbar">
-		<div class="navbar__logo" style="margin-right : -50px;">
+		<div class="navbar__logo" style="margin-right: -50px;">
 			<a href="main.do?user_id=${result }"
-			 style="margin-right: 200px; font-weight:600; font-size:32px;">
-			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
+				style="margin-right: 200px; font-weight: 600; font-size: 32px;">
+				<img src="images/foruslogo3.png" width="60px" height="60px"
+				style="margin-right: 5px;">EARTH BOX
+			</a>
 		</div>
-		<ul class="navbar__menu">
+	<ul class="navbar__menu">
 			<strong><li>
 					<%
 					if (result == null) {
@@ -88,17 +91,8 @@
  }
  %>
 			</li></strong>
-			<strong><li><a href="keypad.do">박스열기</a></li></strong>
-			<strong><li>
-					<%
-					if (result == null) {
-					%> <a href=viewLogin.do>주문내역</a> <%
- } else {
- %>
-					<a href=orderlist.do>주문내역</a> <%
- }
- %>
-			</li></strong>
+			<strong><li><a href="manual.do">이용방법</a></li></strong>
+			<strong><li><a href=orderlist.do>주문내역</a></li></strong>
 		</ul>
 		<a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i>
 		</a>
@@ -140,7 +134,7 @@
 										<h5>${vo.v_machine_pw}</h5>
 									</td>
 									<td>
-										<h5>${vo.g_price}</h5>
+										<h5><fmt:formatNumber value="${vo.g_price }" pattern="#,###"/>원</h5>
 									</td>
 									<td>
 										<h5>${vo.g_regdate}</h5>

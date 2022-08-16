@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,28 +68,38 @@
 
 <body>
 	<!---------------------------- nav bar 시작 ------------------>
-	<%String result = (String)session.getAttribute("user_id");%>
+	<%
+	String result = (String) session.getAttribute("user_id");
+	%>
 	<nav class="navbar">
-		<div class="navbar__logo" style="margin-right : -50px;">
+		<div class="navbar__logo" style="margin-right: -50px;">
 			<a href="main.do?user_id=${result }"
-			 style="margin-right: 200px; font-weight:600; font-size:32px;">
-			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
+				style="margin-right: 200px; font-weight: 600; font-size: 32px;">
+				<img src="images/foruslogo3.png" width="60px" height="60px"
+				style="margin-right: 5px;">EARTH BOX
+			</a>
 		</div>
 		<ul class="navbar__menu">
 			<strong><li>
-			<% if(result == null){ %>
-			<a href="viewLogin.do">로그인</a>
-			<% } else { %>
-			<a href="logoutService.do">로그아웃</a>
-			<% } %>
+					<%
+					if (result == null) {
+					%> <a href="viewLogin.do">로그인</a> <%
+ } else {
+ %>
+					<a href="logoutService.do">로그아웃</a> <%
+ }
+ %>
 			</li></strong>
 			<strong><li><a href="manual.do">이용방법</a></li></strong>
 			<strong><li>
-			<% if(result == null){ %>
-			<a href=viewLogin.do>주문내역</a>
-			<% } else { %>
-			<a href=orderlist.do>주문내역</a>
-			<%} %>
+					<%
+					if (result == null) {
+					%> <a href=viewLogin.do>주문내역</a> <%
+ } else {
+ %>
+					<a href=orderlist.do>주문내역</a> <%
+ }
+ %>
 			</li></strong>
 		</ul>
 		<a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i>
@@ -100,7 +111,9 @@
 	<!-------------------- 주문 완료 -------------------------------->
 
 	<div class="container h-100">
-		<div class="text-center"><br><br>
+		<div class="text-center">
+			<br>
+			<br>
 			<h1>구매가 정상적으로 완료되었습니다.</h1>
 		</div>
 	</div>
@@ -108,36 +121,39 @@
 	<!-- 주문완료 -->
 	<div class="orderInfo">
 
-		
+
 		<br /> <br /> <br />
 		<p align="center">
-			<strong>고객님의 결제가 완료 되었습니다.</strong><br> 제품 호출은 <a
-				href="" style="color: #507050"><b>이용방법</b></a> 를 통하여 확인 가능합니다.
+			<strong>고객님의 결제가 완료 되었습니다.</strong><br> 제품 호출은 <a href=""
+				style="color: #507050"><b>이용방법</b></a> 를 통하여 확인 가능합니다.
 		</p>
 		<br />
 		<!----------------------------- 주문 목록 시작 --------------------------->
-			<div class="container">
-				<div class="cart_inner">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col"><img src="${vo.g_img}" style="width:500px; margin-right:30px; margin-bottom:50px;"></th>
-								</tr>
-								<tr>
-									<th scope="col"><p style="font-size: 35px; font-height:500px;">${vo.g_name }</p></th>
-								</tr>
-								<tr>
-									<th scope="col"><p style="font-size: 30px; font-height:500px;">￦${vo.g_price }</p></th>
-								</tr>
-								<tr>
-								
-								</tr>
-							</thead>
-						</table>
-					</div>
+		<div class="container">
+			<div class="cart_inner">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col"><img src="${vo.g_img}"
+									style="width: 500px; margin-right: 30px; margin-bottom: 50px;"></th>
+							</tr>
+							<tr>
+								<th scope="col"><p
+										style="font-size: 35px; font-height: 500px;">${vo.g_name }</p></th>
+							</tr>
+							<tr>
+								<th scope="col"><p
+										style="font-size: 30px; font-height: 500px;">￦<fmt:formatNumber value="${vo.g_price }" pattern="#,###"/></p></th>
+							</tr>
+							<tr>
+
+							</tr>
+						</thead>
+					</table>
 				</div>
 			</div>
+		</div>
 		<!---------------------------- 주문 목록 끝 --------------------->
 	</div>
 	<!-- 결제정보 -->
@@ -146,41 +162,44 @@
 			<h3>결제정보</h3>
 			<br />
 		</div>
-		
+
 		<div class="container h-100">
-			<table class="table table-hover table-striped table-borderd" width='1000px'>
-			
-					<tr>
-						<th scope="col">최종결제금액 </th>
-						<td scope="col">￦${vo.g_price }</td>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-					<tr>
-						<th scope="row">결제수단 </th>
-						<td scope="col">카카오 페이</td>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-					<tr>
-						<th scope="row">박스번호 </th>
-						<td scope="col">${vo.v_machine_space_no }</td>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-					<tr>
-						<th scope="row">박스비밀번호 </th>
-						<td scope="col">${vo.v_machine_pw}</td>
-						<th scope="col"></th>
-						<th scope="col"></th>
-					</tr>
-					
+			<table class="table table-hover table-striped table-borderd"
+				width='1000px'>
+
+				<tr>
+					<th scope="col">최종결제금액</th>
+					<td scope="col">￦<fmt:formatNumber value="${vo.g_price }" pattern="#,###"/></td>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+				<tr>
+					<th scope="row">결제수단</th>
+					<td scope="col">카카오 페이</td>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+				<tr>
+					<th scope="row">박스번호</th>
+					<td scope="col">${vo.v_machine_space_no }</td>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+				<tr>
+					<th scope="row">박스비밀번호</th>
+					<td scope="col">${vo.v_machine_pw}</td>
+					<th scope="col"></th>
+					<th scope="col"></th>
+				</tr>
+
 			</table>
 		</div>
 	</div>
-	<br /><br />
+	<br />
+	<br />
 	<p align="center">
-		<a class="button primary-btn" href="keypad.do?g_seq=${vo.g_seq }">박스열기</a> <a
+		<a class="button primary-btn" href="keypad.do?g_seq=${vo.g_seq }">박스열기</a>
+		<a
 	</p>
 
 	<!-------------------- 주문 완료 끝 -------------------------------->
@@ -197,7 +216,8 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="footer_logo   wow fadeInUp animated">
-							<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX
+							<img src="images/foruslogo3.png" width="60px" height="60px"
+								style="margin-right: 5px;">EARTH BOX
 						</div>
 					</div>
 				</div>
@@ -251,22 +271,23 @@
 	<script src="js/script.js"></script>
 	<script src="js/shopmain.js"></script>
 	<script>
-	
-	  function goodsStatusUpdate(g_seq){
-		  
-	 
-		$.ajax({
-			url : "goodsStatusUpdate.do",
-			type : "post",
-			data : {"g_seq" : g_seq},
-			success : function(data){
-				 location.href="/buycom.do?g_seq=${vo.g_seq }"
-						console.log("성공")
-			},
-			error : function(){alert('error')} 
-		});
-	  }
-	  
+		function goodsStatusUpdate(g_seq) {
+
+			$.ajax({
+				url : "goodsStatusUpdate.do",
+				type : "post",
+				data : {
+					"g_seq" : g_seq
+				},
+				success : function(data) {
+					location.href = "/buycom.do?g_seq=${vo.g_seq }"
+					console.log("성공")
+				},
+				error : function() {
+					alert('error')
+				}
+			});
+		}
 	</script>
 </body>
 </html>

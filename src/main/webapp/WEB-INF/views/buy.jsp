@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,26 +71,22 @@
 	<!---------------------------- nav bar 시작 ------------------>
 	<%String result = (String)session.getAttribute("user_id");%>
 	<nav class="navbar">
-		<div class="navbar__logo" style="margin-right : -50px;">
+		<div class="navbar__logo" style="margin-right: -50px;">
 			<a href="main.do?user_id=${result }"
-			 style="margin-right: 200px; font-weight:600; font-size:32px;">
-			<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;">EARTH BOX</a>
+				style="margin-right: 200px; font-weight: 600; font-size: 32px;">
+				<img src="images/foruslogo3.png" width="60px" height="60px"
+				style="margin-right: 5px;">EARTH BOX
+			</a>
 		</div>
 		<ul class="navbar__menu">
 			<strong><li>
-			<% if(result == null){ %>
-			<a href="viewLogin.do">로그인</a>
-			<% } else { %>
-			<a href="logoutService.do">로그아웃</a>
-			<% } %>
+					<% if(result == null){ %> <a href="viewLogin.do">로그인</a> <% } else { %>
+					<a href="logoutService.do">로그아웃</a> <% } %>
 			</li></strong>
 			<strong><li><a href="manual.do">이용방법</a></li></strong>
 			<strong><li>
-			<% if(result == null){ %>
-			<a href=viewLogin.do>주문내역</a>
-			<% } else { %>
-			<a href=orderlist.do>주문내역</a>
-			<%} %>
+					<% if(result == null){ %> <a href=viewLogin.do>주문내역</a> <% } else { %>
+					<a href=orderlist.do>주문내역</a> <%} %>
 			</li></strong>
 		</ul>
 		<a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i>
@@ -125,7 +122,7 @@
 						</tr>
 						<tr>
 							<th scope="col"><p
-									style="font-size: 30px; font-height: 500px;">￦${vo.g_price }</p></th>
+									style="font-size: 30px; font-height: 500px;">￦<fmt:formatNumber value="${vo.g_price }" pattern="#,###"/></p></th>
 						</tr>
 						<tr>
 						</tr>
@@ -158,7 +155,7 @@
 						<td></td>
 						<td></td>
 						<td>
-							<h5>￦${vo.g_price }</h5>
+							<h5>￦<fmt:formatNumber value="${vo.g_price }" pattern="#,###"/></h5>
 						</td>
 					</tr>
 					<tr class="shipping_area">
@@ -174,9 +171,7 @@
 									<li><input type="radio" name="payment" value="">카카오페이</li>
 									<li><input type="radio" name="payment" value="">네이버페이</li>
 								</ul>
-								<button type="button" id="kakaopay">
-									카카오페이
-								</button>
+								<button type="button" id="kakaopay">카카오페이</button>
 							</div>
 						</td>
 					</tr>
@@ -207,7 +202,9 @@
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<div class="footer_logo   wow fadeInUp animated">
-							<img src="images/foruslogo3.png" width="60px" height="60px" style="margin-right: 5px;"><p>EARTH BOX</p>
+							<img src="images/foruslogo3.png" width="60px" height="60px"
+								style="margin-right: 5px;">
+							<p>EARTH BOX</p>
 						</div>
 					</div>
 				</div>
