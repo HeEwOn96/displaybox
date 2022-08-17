@@ -226,7 +226,7 @@
 	<script src="js/script.js"></script>
 	<script src="js/shopmain.js"></script>
 	<script>
-		var goDelete = function(g_seq){
+		let goDelete = function(g_seq){
 			$.ajax({
 				url : "deleteGoods.do",
 				type : "post",
@@ -238,6 +238,8 @@
 				error : function(){alert('error')} 
 			});
 		}
+		
+		
 	
 	</script>
 
