@@ -40,7 +40,7 @@
 	<!-- 4. 상품 결제 완료 후 판매 상품 상태 '완료'로 바꾸기 -->
 	<update id="goodsStatusUpdate" parameterType="com.forus.domain.GoodsVO">
 		update goods_tb
-		set g_status='완료'
+		set g_status='완료', consumer_id=#{user_id}
 		where g_seq = #{g_seq}
 	</update>
 	

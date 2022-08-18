@@ -47,4 +47,7 @@ public interface UserMapper {
 	
 	/// led data 아두이노 출력
 	public List<ledVO> dataLed();
+	
+	// 포인트 차감
+	public int updatePoint(String user_id, int user_point);
 }
