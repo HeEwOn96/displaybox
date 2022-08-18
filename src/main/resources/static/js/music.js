@@ -26,5 +26,7 @@ const magnetic = function () {
 		})
 	}
 	
+
+	
 setInterval(magnetic, 1000);
 

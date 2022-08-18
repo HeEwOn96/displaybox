@@ -61,6 +61,7 @@
 		where g_seq = #{g_seq}	
 	</update>
 	
+	<!-- 마그네틱 센서 -->
 	<select id="GetSensorList" resultType="com.forus.domain.sensorVO">
 		select * from sensor_tb
 	</select>
@@ -72,5 +73,18 @@
 	<update id="UpdateSensorStatus" parameterType="com.forus.domain.sensorVO">
 		update sensor_tb set sensor_status=#{sensor_status} where sensor_id=#{sensor_id}
 	</update>
+
+	
+	<!--  led update -->
+	<update id="UpdateLed" >
+		update led_tb set led_status=#{led_status} where led_id=#{led_id}
+	</update>
+	
+	<!--  led 데이터 아두이노 보내기 -->
+	<select id="dataLed" resultType="com.forus.domain.ledVO">
+		select * from led_tb
+	</select>
+	
+	
 </mapper>
 

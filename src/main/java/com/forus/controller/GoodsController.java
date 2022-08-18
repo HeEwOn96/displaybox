@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,7 +19,9 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.Response;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -45,17 +48,23 @@ import com.forus.domain.GoodsVO;
 import com.forus.domain.GsonDateAdapter;
 import com.forus.domain.PaymentRequestResponse;
 import com.forus.domain.UserVO;
+import com.forus.domain.ledVO;
 import com.forus.service.GoodsService;
+import com.forus.service.LedService;
 import com.forus.service.SensorService;
 import com.forus.service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
 @Controller
 public class GoodsController {
 	public static String doorbtn = "";
 	public static String lastTid = "";
+	public static String list = null;
+	
+	
 
 	@Autowired
 	private GoodsService goodsService;
@@ -63,6 +72,8 @@ public class GoodsController {
 	private UserService userService;
 	@Autowired
 	private SensorService sensorService;
+	@Autowired
+	private LedService ledService;
 
 	// 초기화면
 	@RequestMapping("/")
@@ -217,14 +228,15 @@ public class GoodsController {
 
 	// 9. 상품 삭제하기
 	@RequestMapping("/deleteGoods.do")
-	public @ResponseBody GoodsVO goodsDelete(int g_seq) {
+	public String goodsDelete(int g_seq,Model model) {
 
 		// 통신 됨
 		System.out.println("상품 삭제 페이지 g_seq : " + g_seq);
 		userService.deleteGoods(g_seq);
 		GoodsVO vo = goodsService.goodsOne(g_seq);
 		System.out.println("상품 삭제 성공");
-		return vo;
+		
+		return"redirect:/getGoods.do";
 	}
 
 	// 10. 비밀번호 입력 페이지
@@ -399,30 +411,34 @@ public class GoodsController {
 
 	@RequestMapping("/BoxLed1.do")
 	public String boxled1(String btn) {
+		System.out.println("버튼온값 : "+btn);
 		doorbtn = btn;
 
-		return "text";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/BoxLed2.do")
 	public String boxled2(String btn) {
+		System.out.println("버튼온값 : "+btn);
 		doorbtn = btn;
 
-		return "text";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/BoxLed3.do")
 	public String boxled3(String btn) {
+		System.out.println("버튼온값 : "+btn);
 		doorbtn = btn;
 
-		return "text";
+		return "redirect:/main.do";
 	}
 
 	@RequestMapping("/BoxLed4.do")
 	public String boxled4(String btn) {
+		System.out.println("버튼온값 : "+btn);
 		doorbtn = btn;
 
-		return "text";
+		return "redirect:/main.do";
 	}
 
 	@GetMapping("/api/sensor")	
@@ -445,24 +461,53 @@ public class GoodsController {
 		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 	}
 
-//	@RequestMapping("/module_warning.do")
-//	public ResponseEntity<Object> modulewarning(Integer sensor, Boolean isOpend, Model model) {
-//		if(isOpend == null){		
-//		    return new ResponseEntity<Object>(HttpStatus.BAD_REQUEST);
-//		}
-//		System.out.println("sensor: " + sensor + ", isOpend: " + isOpend);
-//		if(isOpend.booleanValue()) {
-//		}else {
-//		}
-//		
-//		
-//	    return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
-//
+//	@GetMapping("/api/led")	
+//	@ResponseBody
+//	public Object GetLedList() {
+//		return ledService.GetLedStatusList();	
 //	}
 //	
-//	public ResponseEntity<Object> Waring(int sensor, boolean isOpend) {
-//		
-//	    return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+//	@GetMapping("/api/led/{id}")	
+//	@ResponseBody
+//	public Object GetLed(@PathVariable Integer id) {
+//		return ledService.GetLedStatus(id);		
 //	}
+//	
+//	@PutMapping("/api/led/{id}")	
+//	@ResponseBody
+//	public ResponseEntity<Object> PutLed(@PathVariable Integer id, Integer status) {
+//		ledService.UpdateLedStatus(id, status);
+//		System.out.println("led: " + id + ", status: " + status);
+//		return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
+//	}
+	
+//	@RequestMapping("/api/led")
+//	@ResponseBody
+//	public List<ledVO> Arduino() {
+//		List<ledVO> list = ledService.dataLed();
+//		System.out.println("아두이노 보내는 data :" + list);
+//		return list;
+//	}
+	
 
+//	@RequestMapping("/BoxLed1.do")
+//	public String boxled1(String btn, String status) {
+//		doorbtn = btn;
+//		ledVO vo = null;
+//		System.out.println("상태  :" +status);
+//		System.out.println("btn : " + btn);
+//		int led_id = Integer.parseInt(btn);
+//		int led_status = Integer.parseInt(status);
+////		vo.setLed_id(number);
+////		vo.setLed_status(Integer.parseInt(status));
+//
+//		int row = ledService.UpdateLed(led_id,led_status);
+//		System.out.println("변환 : " + row);
+//		//btn=1 라면..
+//		//BoxLed1의 상태값이 1로 업데이트된다.
+//		return "text";
+//	}
+	
+
+	
 }

@@ -179,7 +179,7 @@ div {
 	-->
 
 		<script>
-			var link = "main.do?user_id=${result }";
+		    let link = 'BoxLed1.do?btn=2';
 			
 			
 		

@@ -98,15 +98,14 @@ background-color : white;
 <body>
 	<div class="pwWrap">
     <div class="numberSection">
-        <button class="number" onclick="location.href='BoxLed1.do?btn=1';">1on</button>
-        <button class="number" onclick="location.href='BoxLed1.do?btn=2';">1off</button>
-        <button class="number" onclick="location.href='BoxLed2.do?btn=3';">2on</button>
-        <button class="number" onclick="location.href='BoxLed2.do?btn=4';">2off</button>
-        <button class="number" onclick="location.href='BoxLed3.do?btn=5';">3on</button>
-        <button class="number" onclick="location.href='BoxLed3.do?btn=6';">3off</button>
-        <button class="number" onclick="location.href='BoxLed4.do?btn=7';">4on</button>
-        <button class="number" onclick="location.href='BoxLed4.do?btn=8';">4off</button>
-        <button class="number" onclick="location.href='module_warning.do?sensor=5&isOpend=true';">테스트</button>
+        <button class="number" onclick="location.href='BoxLed1.do?btn=1';">1off</button>
+        <button class="number" onclick="location.href='BoxLed1.do?btn=2';">1on</button>
+        <button class="number" onclick="location.href='BoxLed2.do?btn=3';">2off</button>
+        <button class="number" onclick="location.href='BoxLed2.do?btn=4';">2on</button>
+        <button class="number" onclick="location.href='BoxLed3.do?btn=5';">3off</button>
+        <button class="number" onclick="location.href='BoxLed3.do?btn=6';">3on</button>
+        <button class="number" onclick="location.href='BoxLed4.do?btn=7';">4off</button>
+        <button class="number" onclick="location.href='BoxLed4.do?btn=8';">4on</button>
     </div>
 </div>
 

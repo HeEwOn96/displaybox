@@ -144,8 +144,7 @@
 											<h5>${vo.g_regdate}</h5>
 										</td>
 										<td>
-											<button class="btn btn-info btn-sm"
-												onclick="goDelete(${vo.g_seq})">삭제</button>
+											<button class="btn btn-info btn-sm" onclick="location.href='deleteGoods.do?g_seq=${vo.g_seq}'">삭제</button>
 										</td>
 									</tr>
 								</form>
@@ -226,19 +225,7 @@
 	<script src="js/script.js"></script>
 	<script src="js/shopmain.js"></script>
 	<script>
-		let goDelete = function(g_seq){
-			$.ajax({
-				url : "deleteGoods.do",
-				type : "post",
-				data : {"g_seq" : g_seq},
-				success : function(data){
-					console.log("성공")
-					location.href="/getGoods.do";
-				},
-				error : function(){alert('error')} 
-			});
-		}
-		
+	
 		
 	
 	</script>
