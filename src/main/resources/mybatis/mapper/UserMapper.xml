@@ -72,5 +72,10 @@
 	<update id="UpdateSensorStatus" parameterType="com.forus.domain.sensorVO">
 		update sensor_tb set sensor_status=#{sensor_status} where sensor_id=#{sensor_id}
 	</update>
+	
+	<update id="updatePoint">
+		update user_tb set user_point = user_point-#{user_point} where user_id = #{user_id}
+	</update>
+	
 </mapper>
 

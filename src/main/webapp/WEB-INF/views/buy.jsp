@@ -122,7 +122,10 @@
 						</tr>
 						<tr>
 							<th scope="col"><p
-									style="font-size: 30px; font-height: 500px;">￦<fmt:formatNumber value="${vo.g_price }" pattern="#,###"/></p></th>
+									style="font-size: 30px; font-height: 500px;">
+									￦
+									<fmt:formatNumber value="${vo.g_price }" pattern="#,###" />
+								</p></th>
 						</tr>
 						<tr>
 						</tr>
@@ -142,11 +145,13 @@
 						<td></td>
 						<td>
 							<div class="cupon_text d-flex align-items-center">
-								<h5 style="font-size: 17px; margin-left: 200px">
-									${vo.user_point } point
-									<h5>
-										<input type="text" placeholder="사용할 포인트"> <a
-											class="primary-btn" href="#">적용</a>
+								<span id="CanPoint" style="font-size: 17px; margin-left: 200px">
+									${vo.user_point} </span> <span
+									style="font-size: 17px; margin: 0px 10px 0px 5px"> point</span>
+								<input type="number" placeholder="사용할 포인트" id="use-point">
+								<button class="primary-btn btn"
+									onclick="usingPoint(${vo.g_price},${vo.user_point})">적용</button>
+
 							</div>
 						</td>
 					</tr>
@@ -154,9 +159,8 @@
 						<td><h5 style="text-align: left !important;">총 결제 금액</h5></td>
 						<td></td>
 						<td></td>
-						<td>
-							<h5>￦<fmt:formatNumber value="${vo.g_price }" pattern="#,###"/></h5>
-						</td>
+						<td><span id="final-price" style="font-weight: bold;">￦<fmt:formatNumber
+									value="${vo.g_price}" pattern="#,###" /></span>&nbsp원</td>
 					</tr>
 					<tr class="shipping_area">
 						<td class="d-none d-md-block"><h5
@@ -173,6 +177,7 @@
 								</ul>
 								<button type="button" id="kakaopay">카카오페이</button>
 							</div>
+
 						</td>
 					</tr>
 					<tr class="out_button_area">
@@ -260,16 +265,27 @@
 	
 	// 상품 상태 업데이트
 	function goodsStatusUpdate(g_seq){
+		var user_point = parseInt($("#use-point").val())
+		console.log(user_point)
+		// nan 값 처리
+		if (isNaN(user_point)){
+			user_point=0;
+		}
 	
+		console.log(g_seq)
+		
 		$.ajax({
 			url : "goodsStatusUpdate.do",
 			type : "post",
-			data : {"g_seq" : g_seq},
-			success : function(data){
-				 location.href="/buycom.do?g_seq=${vo.g_seq }&user_id=${result }"
-						console.log("판매 상태 변경 성공")
+			data : {"g_seq" : g_seq,
+			"user_point" : user_point	
 			},
-			error : function(){alert('error')} 
+			success : function(){
+				console.log("성공")
+			},
+			error : function(){
+				alert('error')
+				} 
 		});
 		
 	}
@@ -292,7 +308,46 @@
 		});
 	})
 		
+	// 포인트 사용버튼 클릭 시 최종결제금액 변경
+	function usingPoint(g_price,user_point){
+        var price = parseInt(g_price)
+        var point = parseInt($("#use-point").val())
+        console.log()
+        
+        console.log("가격 : "+price)
+        console.log("포인투 : "+point)
+        
+		if (isNaN(point)){
+			point=0;
+		}
+        
+        var fPrice = price-point
+        console.log(fPrice)
+        
+         fPrice = fPrice.toString().replace(
+                 /\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        $("#final-price").html("")
+        $("#final-price").html("￦" + fPrice)
+        
+	}
 		
+	
+    $('#use-point').on('propertychange change keyup paste input', function() {
+        var CanPoint = parseInt($("#CanPoint").html())
+         var point =  parseInt($("#use-point").val());
+        
+        console.log("사용할포인뚜 : "+point)
+        console.log("사용가눙한 : "+CanPoint)
+        console.log("함수싫행")
+         
+        if(point > CanPoint) {
+           
+           $("#use-point").val(CanPoint)
+           
+        }
+        
+         });
+
 	  	
 	</script>
 </body>

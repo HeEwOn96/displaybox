@@ -115,11 +115,20 @@ public class GoodsController {
 
 	// 4. 상품 판매 상태 변경
 	@RequestMapping("/goodsStatusUpdate.do")
-	public @ResponseBody GoodsVO goodsStatus(int g_seq) {
-
+	public @ResponseBody GoodsVO goodsStatus(int g_seq, int user_point, HttpServletRequest request, HttpSession session) {
+		String user_id = (String) session.getAttribute("user_id");
+		
+		
+		System.out.println("포인트 : " +user_point);
 		// 통신 됨
-		System.out.println("g_seq : " + g_seq);
-		goodsService.goodsStatusUpdate(g_seq);
+		System.out.println("g_seq : " + g_seq + "유저아이디 : " + user_id);
+		if (user_point > 0) {
+			userService.updatePoint(user_id, user_point);
+		}
+		
+		
+		// 애부터문제
+		goodsService.goodsStatusUpdate(g_seq,user_id);
 		GoodsVO vo = goodsService.goodsOne(g_seq);
 		System.out.println(vo);
 		return vo;

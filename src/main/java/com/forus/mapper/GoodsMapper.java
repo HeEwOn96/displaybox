@@ -25,7 +25,7 @@ public interface GoodsMapper {
 	public GoodsBuyVO goodsBuy(int g_seq);
 	
 	// 4. 상품 상태 판매 -> 완료로 변경
-	public int goodsStatusUpdate(int g_seq);
+	public int goodsStatusUpdate(int g_seq, String user_id);
 	
 	// 5. 상품 판매 완료
 	public GoodsBuyCompleteVO goodsComplete(int g_seq);

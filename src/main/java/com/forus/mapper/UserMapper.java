@@ -39,4 +39,7 @@ public interface UserMapper {
 	public sensorVO GetSensorStatus(int id);
 	
 	public int UpdateSensorStatus(sensorVO sensor);
+	
+	// 포인트 차감
+	public int updatePoint(String user_id, int user_point);
 }

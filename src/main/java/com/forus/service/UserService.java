@@ -55,4 +55,9 @@ public class UserService {
 	public List<sensorVO> sensor(int sesnor_id){
 		return mapper.GetSensorList();
 	}
+	
+	// 9.포인트 차감
+	public int updatePoint(String user_id, int user_point) {
+		return mapper.updatePoint(user_id, user_point);
+	}
 }

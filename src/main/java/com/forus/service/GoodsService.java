@@ -37,8 +37,8 @@ public class GoodsService {
 	}
 	
 	// 4. goodsStatusUpdate.do
-	public int goodsStatusUpdate(int g_seq) {
-		return mapper.goodsStatusUpdate(g_seq);
+	public int goodsStatusUpdate(int g_seq, String user_id) {
+		return mapper.goodsStatusUpdate(g_seq, user_id);
 	}
 	
 	// 5. buycomplete.do
