@@ -2,7 +2,6 @@
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -10,10 +9,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,13 +24,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.forus.domain.GoodsBuyCompleteVO;
 import com.forus.domain.GoodsBuyVO;
@@ -43,6 +37,7 @@ import com.forus.domain.GoodsOrderListVO;
 import com.forus.domain.GoodsPwVO;
 import com.forus.domain.GoodsVO;
 import com.forus.domain.GsonDateAdapter;
+import com.forus.domain.KakaoResponse;
 import com.forus.domain.PaymentRequestResponse;
 import com.forus.domain.UserVO;
 import com.forus.service.GoodsService;
@@ -50,7 +45,6 @@ import com.forus.service.SensorService;
 import com.forus.service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Order;
 
 @Controller
 public class GoodsController {
@@ -126,8 +120,6 @@ public class GoodsController {
 			userService.updatePoint(user_id, user_point);
 		}
 		
-		
-		// 애부터문제
 		goodsService.goodsStatusUpdate(g_seq,user_id);
 		GoodsVO vo = goodsService.goodsOne(g_seq);
 		System.out.println(vo);
@@ -285,7 +277,7 @@ public class GoodsController {
 
 			// parameter 설정해주기 홈페이지에 O 표시 되어있는 애들만
 			String parameter = "cid=TC0ONETIME&partner_order_id=partner_order_id&partner_user_id=partner_user_id"
-					+ "&item_name=engitem&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0"
+					+ "&item_name=시계&item_code=35&quantity=1&total_amount=2200&vat_amount=200&tax_free_amount=0"
 					+ "&approval_url=http://localhost:8081/buySuccess.do" + "&fail_url=http://localhost:8081/buyFail.do"
 					+ "&cancel_url=http://localhost:8081/buyCancel.do";
 
@@ -312,7 +304,6 @@ public class GoodsController {
 
 			String jsonStr = new BufferedReader(new InputStreamReader(inputstream)).lines()
 					.collect(Collectors.joining("\n"));
-			System.out.print(jsonStr);
 
 			Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new GsonDateAdapter()).create();
 			PaymentRequestResponse paymentRequestResponse = gson.fromJson(jsonStr, PaymentRequestResponse.class);
@@ -357,8 +348,10 @@ public class GoodsController {
 			}
 			InputStreamReader reader = new InputStreamReader(inputstream);
 			BufferedReader buffer = new BufferedReader(reader);
-
-			return buffer.readLine();
+			Gson gson = new GsonBuilder().registerTypeAdapter(Date.class, new GsonDateAdapter()).create();
+			KakaoResponse response = gson.fromJson(buffer, KakaoResponse.class);
+			
+			return "redirect:/buycom.do?g_seq=" + response.item_code;
 
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -366,6 +359,7 @@ public class GoodsController {
 			e.printStackTrace();
 		}
 
+		// 여기는 결제를 실패할때 도달하는 페이지입니다.
 		return "redirect:/buy.do";
 	}
 

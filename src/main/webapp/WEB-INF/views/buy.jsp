@@ -271,7 +271,6 @@
 		if (isNaN(user_point)){
 			user_point=0;
 		}
-	
 		console.log(g_seq)
 		
 		$.ajax({
@@ -331,15 +330,11 @@
         
 	}
 		
-	
+	// 입력한 포인트가 보유 포인트보다 많다면 사용가능한 포인트만큼만 불러오기
     $('#use-point').on('propertychange change keyup paste input', function() {
         var CanPoint = parseInt($("#CanPoint").html())
          var point =  parseInt($("#use-point").val());
         
-        console.log("사용할포인뚜 : "+point)
-        console.log("사용가눙한 : "+CanPoint)
-        console.log("함수싫행")
-         
         if(point > CanPoint) {
            
            $("#use-point").val(CanPoint)
