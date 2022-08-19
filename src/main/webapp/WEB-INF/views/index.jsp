@@ -140,7 +140,7 @@
 							<br>
 							<div class="card-product__img">
 								<!-- 상품 사진 출력 -->
-								<img class="card-img" src=${goodsVo.g_img } alt="">
+								<img class="card-img" src="/img/product/${goodsVo.g_img}" alt="">
 								<ul class="card-product__imgOverlay">
 									<!-- 상세 페이지 보기 -->
 									<%

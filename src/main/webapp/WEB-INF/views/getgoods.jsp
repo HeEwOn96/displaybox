@@ -131,7 +131,7 @@
 										<input type="hidden" name="g_seq" id="g_seq" +${i}
 											value="${vo.g_seq }">
 										<td>
-													<img src=${vo.g_img } width="250px" height="250px">
+													<img src="/img/product/${vo.g_img }" width="250px" height="250px">
 													<p>${vo.g_name}</p>
 										</td>
 										<td>

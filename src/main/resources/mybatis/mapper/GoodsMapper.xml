@@ -13,7 +13,7 @@
         and l.loc_seq in
 			(select l.loc_seq 
 			from g_location_tb 
-			where l.v_machine_seq=2) 
+			where l.v_machine_seq=1) 
         order by loc_seq asc
 	</select>
 	

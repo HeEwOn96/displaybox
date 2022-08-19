@@ -128,7 +128,7 @@
 							<c:forEach items="${vo}" var="vo">
 
 								<tr>
-									<td><img src=${vo.g_img } width="250px" height="250px">
+									<td><img src="/img/product/${vo.g_img }" width="250px" height="250px">
 										<h5>${vo.g_name}</h5></td>
 									<td>
 										<h5>${vo.v_machine_pw}</h5>

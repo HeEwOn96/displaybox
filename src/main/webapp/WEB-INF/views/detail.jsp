@@ -109,7 +109,7 @@
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
-					<img class="col-lg-6" src=${vo.g_img} alt="" style ="width:500px; height:500px; margin-top: 30px; margin-left: 95px;">
+					<img class="col-lg-6" src="/img/product/${vo.g_img}" alt="" style ="width:500px; height:500px; margin-top: 30px; margin-left: 95px;">
 					<div class="owl-carousel owl-theme s_Product_carousel">
 						<div class="single-prd-item">
 							<img class="img-fluid" src="img/category/s-p1.jpg" alt="">

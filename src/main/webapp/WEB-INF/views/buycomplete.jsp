@@ -81,25 +81,19 @@
 		</div>
 		<ul class="navbar__menu">
 			<strong><li>
-					<%
-					if (result == null) {
-					%> <a href="viewLogin.do">로그인</a> <%
- } else {
- %>
-					<a href="logoutService.do">로그아웃</a> <%
- }
- %>
+			<% if (result == null) { %> 
+			<a href="viewLogin.do">로그인</a> 
+			<% } else { %>
+			<a href="logoutService.do">로그아웃</a> 
+			<% } %>
 			</li></strong>
 			<strong><li><a href="manual.do">이용방법</a></li></strong>
 			<strong><li>
-					<%
-					if (result == null) {
-					%> <a href=viewLogin.do>주문내역</a> <%
- } else {
- %>
-					<a href=orderlist.do>주문내역</a> <%
- }
- %>
+			<% if (result == null) { %> 
+			<a href=viewLogin.do>주문내역</a> 
+			<% } else { %>
+			<a href=orderlist.do>주문내역</a> 
+			<% } %>
 			</li></strong>
 		</ul>
 		<a href="#" class="navbar__toogleBtn"> <i class="fas fa-bars"></i>
@@ -135,7 +129,7 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col"><img src="${vo.g_img}"
+								<th scope="col"><img src="/img/product/${vo.g_img}"
 									style="width: 500px; margin-right: 30px; margin-bottom: 50px;"></th>
 							</tr>
 							<tr>

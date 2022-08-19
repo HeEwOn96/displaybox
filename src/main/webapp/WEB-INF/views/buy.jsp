@@ -112,14 +112,19 @@
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
+						<!-- 상품 이름 -->
 						<tr>
 							<th scope="col"><p
 									style="font-size: 35px; font-weight: 500px !important;">${vo.g_name }</p></th>
 						</tr>
+						
+						<!-- 상품 이미지 -->
 						<tr>
-							<th scope="col"><img src="${vo.g_img}"
+							<th scope="col"><img src="/img/product/${vo.g_img}"
 								style="width: 500px; margin-right: 30px; margin-bottom: 50px;"></th>
 						</tr>
+						
+						<!-- 상품 가격 -->
 						<tr>
 							<th scope="col"><p
 									style="font-size: 30px; font-height: 500px;">
@@ -145,10 +150,15 @@
 						<td></td>
 						<td>
 							<div class="cupon_text d-flex align-items-center">
+								<!-- 사용가능한 포인트 출력 -->
 								<span id="CanPoint" style="font-size: 17px; margin-left: 200px">
 									${vo.user_point} </span> <span
 									style="font-size: 17px; margin: 0px 10px 0px 5px"> point</span>
+									
+								<!-- 사용할 포인트 입력 -->
 								<input type="number" placeholder="사용할 포인트" id="use-point">
+								
+								<!-- 포인트 사용 적용 -->
 								<button class="primary-btn btn"
 									onclick="usingPoint(${vo.g_price},${vo.user_point})">적용</button>
 
@@ -159,6 +169,7 @@
 						<td><h5 style="text-align: left !important;">총 결제 금액</h5></td>
 						<td></td>
 						<td></td>
+						<!-- 포인트 적용된 최종 결제 금액 출력 -->
 						<td><span id="final-price" style="font-weight: bold;">￦<fmt:formatNumber
 									value="${vo.g_price}" pattern="#,###" /></span>&nbsp원</td>
 					</tr>
@@ -175,6 +186,7 @@
 									<li><input type="radio" name="payment" value="">카카오페이</li>
 									<li><input type="radio" name="payment" value="">네이버페이</li>
 								</ul>
+								<!-- 카카오페이 api사용가능 -->
 								<button type="button" id="kakaopay">카카오페이</button>
 							</div>
 
