@@ -125,8 +125,8 @@
   </tr>
    <tr>
     <td align="center"><b>DB구축<br>제품 등록 및 구매기능 구현<br>커뮤니티 구현<br>챌린지 구현<br>웹소켓을 이용한 채팅 구현<br>시연 동영상 제작</b></td>
-    <td align="center"><b>UI,UX 디자인<br>mobile web 전체페이지<br></b></td>
-    <td align="center"><b>UI,UX 디자인<br>display, Web 전체페이지<br>시제품 설계<br>시제품 하드웨어 제작<br>시제품-display 통신</b></td>
+    <td align="center"><b>UI,UX 디자인<br>mobile web 전체페이지<br>모바일 웹 jsp구현<br>메인,로그인,회원가입,<br>커뮤니티,챌린지,채팅,마이페이지 등<br></b></td>
+    <td align="center"><b>UI,UX 디자인<br>display, Web 전체페이지<br>display,Web jsp 구현<br>시제품 설계<br>시제품 하드웨어 제작<br>시제품-display 통신</b></td>
     <td align="center"><b>요구사항 정의<br>Q&A 게시판 제작<br>display 상품 관련 기능 구현<br>자체 구매, mobile과 연동<br>카카오페이 api 결제 구현<br>PPT 제작</b></td>
   </tr>
   <tr>
